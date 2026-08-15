@@ -1,1 +1,7 @@
 .DS_Store
+__pycache__/
+
+# Video build intermediates (regenerate via video/generate_slides.py + build_video.py)
+video/frames/
+video/audio/
+video/clips/

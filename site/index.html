@@ -30,6 +30,7 @@
     <button class="tab-btn active" data-tab="tab-current">Current Expense</button>
     <button class="tab-btn" data-tab="tab-history">History v. Current</button>
     <button class="tab-btn" data-tab="tab-verdict">Reasonable v. Unreasonable</button>
+    <button class="tab-btn" data-tab="tab-video">Watch the Summary</button>
   </div>
 
   <!-- TAB 1: CURRENT EXPENSE -->
@@ -153,6 +154,24 @@
       historical (pre-2025) yard cart fee data to see how $75 compares to, say, five years ago.
       Those would sharpen this comparison considerably.
     </div>
+  </section>
+
+  <!-- TAB 4: VIDEO SUMMARY -->
+  <section id="tab-video" class="tab-panel">
+    <h2>Watch the summary</h2>
+    <p>
+      A ~2:24 narrated walkthrough of the charts and findings above, covering current
+      costs, the fee history, and the reasonable-vs-unreasonable evidence.
+    </p>
+    <div class="chart-box" style="padding:0.5rem;">
+      <video controls preload="metadata" style="width:100%; height:auto; border-radius:8px; display:block;">
+        <source src="video/yard_waste_video.mp4" type="video/mp4" />
+        Your browser doesn't support embedded video. <a href="video/yard_waste_video.mp4">Download the video</a> instead.
+      </video>
+    </div>
+    <p class="source-note" style="border-bottom:none; padding-bottom:0;">
+      Narration is synthesized (macOS text-to-speech, female voice), not a human recording.
+    </p>
   </section>
 
   <footer>
