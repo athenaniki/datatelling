@@ -1,4 +1,6 @@
 // Data mirrors /data/*.csv — kept inline so the page works over file:// without a server.
+// Chart titles are omitted here — each chart sits inside an "Exhibit" block in the HTML
+// that already carries a label + caption, so an in-chart title would just repeat it.
 
 const BUDGET_TREND = [
   { period: "2024-25 Actual", total: 4860732, personnel: 2718518, operating: 2142214 },
@@ -19,26 +21,26 @@ const PEER_FEES = [
   { jurisdiction: "Chapel Hill", fee: 75 },
 ];
 
-const COLORS = {
-  accent: "#2f6b4f",
-  accentSoft: "#8fc6ab",
-  warn: "#b5502f",
-  text: "#2b2620",
-  grid: "#e3ddd3",
-};
-
+// Mirrors the CSS custom properties in css/style.css — Plotly can't read CSS vars directly.
 const isDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-const paperColor = isDark ? "#262320" : "#ffffff";
-const fontColor = isDark ? "#ece7de" : "#2b2620";
-const gridColor = isDark ? "#3a352e" : "#e3ddd3";
+
+const COLORS = isDark
+  ? { green: "#6bad87", greenSoft: "#3c5b48", gold: "#d3a656", navy: "#8fadcc", ink: "#e9ede2" }
+  : { green: "#1f5c3e", greenSoft: "#7ba98c", gold: "#9c7220", navy: "#24405f", ink: "#1a231e" };
+
+const paperColor = isDark ? "#191f16" : "#ffffff";
+const gridColor = isDark ? "#333f2b" : "#e3e8d8";
+const FONT = "'Public Sans', -apple-system, Helvetica, Arial, sans-serif";
+const FONT_MONO = "'IBM Plex Mono', ui-monospace, monospace";
 
 const baseLayout = {
   paper_bgcolor: paperColor,
   plot_bgcolor: paperColor,
-  font: { color: fontColor, family: "-apple-system, Helvetica, Arial, sans-serif" },
-  margin: { t: 40, r: 20, l: 60, b: 50 },
-  xaxis: { gridcolor: gridColor },
-  yaxis: { gridcolor: gridColor },
+  font: { color: COLORS.ink, family: FONT, size: 13 },
+  margin: { t: 38, r: 24, l: 60, b: 46 },
+  xaxis: { gridcolor: gridColor, zeroline: false },
+  yaxis: { gridcolor: gridColor, zeroline: false },
+  bargap: 0.4,
 };
 
 const rendered = { current: false, history: false, verdict: false };
@@ -46,6 +48,8 @@ const rendered = { current: false, history: false, verdict: false };
 function money(n) {
   return "$" + Math.round(n).toLocaleString();
 }
+
+const numberFont = { family: FONT_MONO, size: 15 };
 
 function renderCurrentExpenseCharts() {
   if (rendered.current) return;
@@ -59,14 +63,14 @@ function renderCurrentExpenseCharts() {
         type: "bar",
         x: ["Personnel", "Operating"],
         y: [latest.personnel, latest.operating],
-        marker: { color: [COLORS.accent, COLORS.accentSoft] },
+        marker: { color: [COLORS.green, COLORS.greenSoft] },
         text: [money(latest.personnel), money(latest.operating)],
         textposition: "outside",
+        textfont: numberFont,
       },
     ],
     {
       ...baseLayout,
-      title: "FY2026-27 Solid Waste Division: Personnel vs. Operating",
       yaxis: { ...baseLayout.yaxis, title: "Dollars", tickprefix: "$" },
     },
     { displayModeBar: false, responsive: true }
@@ -86,13 +90,12 @@ function renderHistoryCharts() {
         name: "Total Solid Waste division spend",
         x: BUDGET_TREND.map((d) => d.period),
         y: BUDGET_TREND.map((d) => d.total),
-        line: { color: COLORS.accent, width: 3 },
-        marker: { size: 8 },
+        line: { color: COLORS.green, width: 3 },
+        marker: { size: 8, color: COLORS.green },
       },
     ],
     {
       ...baseLayout,
-      title: "Solid Waste Division Total Expenditure Over Time",
       yaxis: { ...baseLayout.yaxis, title: "Dollars", tickprefix: "$", rangemode: "tozero" },
     },
     { displayModeBar: false, responsive: true }
@@ -106,16 +109,16 @@ function renderHistoryCharts() {
         x: FEE_HISTORY.map((d) => d.period),
         y: FEE_HISTORY.map((d) => d.fee),
         marker: {
-          color: FEE_HISTORY.map((d) => (d.note.includes("cancelled") ? COLORS.warn : COLORS.accent)),
+          color: FEE_HISTORY.map((d) => (d.note.includes("cancelled") ? COLORS.gold : COLORS.green)),
         },
         text: FEE_HISTORY.map((d) => "$" + d.fee),
         textposition: "outside",
+        textfont: numberFont,
         hovertext: FEE_HISTORY.map((d) => d.note),
       },
     ],
     {
       ...baseLayout,
-      title: "Yard Waste Cart Fee: Planned vs. Actual",
       yaxis: { ...baseLayout.yaxis, title: "Dollars per cart", tickprefix: "$", range: [0, 120] },
     },
     { displayModeBar: false, responsive: true }
@@ -136,14 +139,14 @@ function renderVerdictCharts() {
         type: "bar",
         x: ["Division cost change<br>(FY25-26 → FY26-27)", "Yard cart fee change<br>(same period)"],
         y: [Number(costChangePct.toFixed(1)), 0],
-        marker: { color: [COLORS.warn, COLORS.accent] },
+        marker: { color: [COLORS.gold, COLORS.green] },
         text: [`+${costChangePct.toFixed(1)}%`, "0% (held flat)"],
         textposition: "outside",
+        textfont: numberFont,
       },
     ],
     {
       ...baseLayout,
-      title: "Cost Growth vs. Fee Growth",
       yaxis: { ...baseLayout.yaxis, title: "% change", ticksuffix: "%", range: [-5, Math.max(costChangePct + 3, 10)] },
     },
     { displayModeBar: false, responsive: true }
@@ -156,14 +159,14 @@ function renderVerdictCharts() {
         type: "bar",
         x: PEER_FEES.map((d) => d.jurisdiction),
         y: PEER_FEES.map((d) => d.fee),
-        marker: { color: PEER_FEES.map((d) => (d.jurisdiction === "Chapel Hill" ? COLORS.warn : COLORS.accent)) },
+        marker: { color: PEER_FEES.map((d) => (d.jurisdiction === "Chapel Hill" ? COLORS.gold : COLORS.green)) },
         text: PEER_FEES.map((d) => "$" + d.fee),
         textposition: "outside",
+        textfont: numberFont,
       },
     ],
     {
       ...baseLayout,
-      title: "Yard Waste Cart Fee: Chapel Hill vs. Carrboro",
       yaxis: { ...baseLayout.yaxis, title: "Dollars per cart", tickprefix: "$", range: [0, 90] },
     },
     { displayModeBar: false, responsive: true }

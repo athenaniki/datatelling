@@ -4,27 +4,30 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Did we overpay or underpay for our yard waste?</title>
+<meta name="description" content="An independent civic audit of Chapel Hill, NC's yard waste cart fee — what it costs, how it's changed, and the evidence for you to weigh." />
 <link rel="stylesheet" href="css/style.css" />
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 </head>
 <body>
 <div class="page">
 
-  <h1 class="title">Did we overpay or underpay for our yard waste?</h1>
-  <p class="intro">
-    This analysis covers <strong>Orange County, North Carolina</strong> — specifically the
-    <strong>Town of Chapel Hill's</strong> yard waste collection program. Yard waste handling
-    costs and collection rules have both been changing lately. Below is what the Town spends,
-    what it charges, how that compares to the recent past and to a neighboring town, and the
-    evidence you can use to decide for yourself whether the current yard waste cart fee is
-    reasonable, or whether you should feel grateful it isn't higher.
-  </p>
-  <p class="source-note">
-    Independent analysis of public sources, not an official Town publication. Budget figures:
-    Town of Chapel Hill FY2026-27 Manager's Recommended Budget. Fee and policy figures:
-    chapelhillnc.gov "Trash and Yard Waste" page and WRAL News (Oct 2025), current as of this
-    writing. See sources at the bottom of the page.
-  </p>
+  <header class="masthead">
+    <div class="eyebrow"><span class="dot"></span> Civic Budget Audit</div>
+    <h1 class="title">Did we overpay or underpay for our yard waste?</h1>
+    <p class="intro">
+      This analysis covers <strong>Orange County, North Carolina</strong> — specifically the
+      <strong>Town of Chapel Hill's</strong> yard waste collection program. Yard waste handling
+      costs and collection rules have both been changing lately. Below is what the Town spends,
+      what it charges, how that compares to the recent past and to a neighboring town, and the
+      evidence you can use to decide for yourself whether the current yard waste cart fee is
+      reasonable, or whether you should feel grateful it isn't higher.
+    </p>
+    <div class="case-meta">
+      <span><b>Jurisdiction</b> Chapel Hill, Orange County, NC</span>
+      <span><b>Period</b> FY2024-25 – FY2026-27</span>
+      <span><b>Status</b> Independent analysis, not an official Town publication</span>
+    </div>
+  </header>
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="tab-current">Current Expense</button>
@@ -41,7 +44,7 @@
         <div class="value">$75</div>
         <div class="label">Yard waste cart fee (per cart)</div>
       </div>
-      <div class="stat-tile">
+      <div class="stat-tile warn">
         <div class="value">$125</div>
         <div class="label">Loose brush / large pile pickup, per truckload</div>
       </div>
@@ -72,7 +75,11 @@
       which is the closest available breakdown.
     </div>
 
-    <div class="chart-box"><div id="chart-personnel-operating" style="height:360px;"></div></div>
+    <div class="exhibit">
+      <div class="exhibit-label">Exhibit A</div>
+      <div class="chart-box"><div id="chart-personnel-operating" style="height:360px;"></div></div>
+      <p class="exhibit-caption">FY2026-27 Solid Waste division budget, split by cost type.</p>
+    </div>
 
     <h2>What's changing July 1, 2026</h2>
     <ul>
@@ -92,14 +99,22 @@
       and increased funding for vehicle replacement and supplies — not service expansion (staffing
       has stayed flat at 34.0 FTE).
     </p>
-    <div class="chart-box"><div id="chart-budget-trend" style="height:360px;"></div></div>
+    <div class="exhibit">
+      <div class="exhibit-label">Exhibit B</div>
+      <div class="chart-box"><div id="chart-budget-trend" style="height:360px;"></div></div>
+      <p class="exhibit-caption">Total division expenditure, 2024-25 Actual through 2026-27 Recommended.</p>
+    </div>
 
     <h2>Fee history: planned vs. actual</h2>
     <p>
       Despite the division's rising costs, the Town had planned to raise the yard cart fee from
       $75 to $100 effective July 1, 2026 — then reversed that decision, holding it at $75.
     </p>
-    <div class="chart-box"><div id="chart-fee-history" style="height:360px;"></div></div>
+    <div class="exhibit">
+      <div class="exhibit-label">Exhibit C</div>
+      <div class="chart-box"><div id="chart-fee-history" style="height:360px;"></div></div>
+      <p class="exhibit-caption">The planned $100 increase (gold) versus what residents actually pay (green).</p>
+    </div>
 
     <h2>What else changed instead of the fee</h2>
     <p>
@@ -123,8 +138,16 @@
     <h2>The evidence, side by side</h2>
     <p>You decide. Here's what points each way, based on the data above.</p>
 
-    <div class="chart-box"><div id="chart-cost-vs-fee" style="height:340px;"></div></div>
-    <div class="chart-box"><div id="chart-peer-fees" style="height:340px;"></div></div>
+    <div class="exhibit">
+      <div class="exhibit-label">Exhibit D</div>
+      <div class="chart-box"><div id="chart-cost-vs-fee" style="height:340px;"></div></div>
+      <p class="exhibit-caption">Division cost growth vs. the yard cart fee's own growth, same period.</p>
+    </div>
+    <div class="exhibit">
+      <div class="exhibit-label">Exhibit E</div>
+      <div class="chart-box"><div id="chart-peer-fees" style="height:340px;"></div></div>
+      <p class="exhibit-caption">Chapel Hill's cart fee against neighboring Carrboro's.</p>
+    </div>
 
     <div class="verdict-grid">
       <div class="verdict-col reasonable">
@@ -169,9 +192,7 @@
         Your browser doesn't support embedded video. <a href="video/yard_waste_video.mp4">Download the video</a> instead.
       </video>
     </div>
-    <p class="source-note" style="border-bottom:none; padding-bottom:0;">
-      Narration is synthesized (macOS text-to-speech, female voice), not a human recording.
-    </p>
+    <p class="exhibit-caption">Narration is synthesized (macOS text-to-speech, female voice), not a human recording.</p>
   </section>
 
   <footer>
