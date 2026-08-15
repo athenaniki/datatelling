@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Did we overpay or underpay for our yard waste?</title>
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+<div class="page">
+
+  <h1 class="title">Did we overpay or underpay for our yard waste?</h1>
+  <p class="intro">
+    This analysis covers <strong>Orange County, North Carolina</strong> — specifically the
+    <strong>Town of Chapel Hill's</strong> yard waste collection program. Yard waste handling
+    costs and collection rules have both been changing lately. Below is what the Town spends,
+    what it charges, how that compares to the recent past and to a neighboring town, and the
+    evidence you can use to decide for yourself whether the current yard waste cart fee is
+    reasonable, or whether you should feel grateful it isn't higher.
+  </p>
+  <p class="source-note">
+    Independent analysis of public sources, not an official Town publication. Budget figures:
+    Town of Chapel Hill FY2026-27 Manager's Recommended Budget. Fee and policy figures:
+    chapelhillnc.gov "Trash and Yard Waste" page and WRAL News (Oct 2025), current as of this
+    writing. See sources at the bottom of the page.
+  </p>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tab-current">Current Expense</button>
+    <button class="tab-btn" data-tab="tab-history">History v. Current</button>
+    <button class="tab-btn" data-tab="tab-verdict">Reasonable v. Unreasonable</button>
+  </div>
+
+  <!-- TAB 1: CURRENT EXPENSE -->
+  <section id="tab-current" class="tab-panel active">
+    <h2>What it costs right now</h2>
+    <div class="stat-row">
+      <div class="stat-tile flat">
+        <div class="value">$75</div>
+        <div class="label">Yard waste cart fee (per cart)</div>
+      </div>
+      <div class="stat-tile">
+        <div class="value">$125</div>
+        <div class="label">Loose brush / large pile pickup, per truckload</div>
+      </div>
+      <div class="stat-tile">
+        <div class="value">$5.29M</div>
+        <div class="label">FY2026-27 Solid Waste division budget</div>
+      </div>
+      <div class="stat-tile">
+        <div class="value">34.0</div>
+        <div class="label">Solid Waste division FTE staff (flat vs. prior year)</div>
+      </div>
+    </div>
+
+    <table class="fee-table">
+      <thead><tr><th>Fee</th><th>Amount</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Yard waste cart</td><td>$75</td><td>Held flat for FY2026-27; a planned increase to $100 was reversed</td></tr>
+        <tr><td>First trash cart</td><td>Free</td><td>Included with service</td></tr>
+        <tr><td>Additional trash cart</td><td>$60</td><td>One additional cart per household</td></tr>
+        <tr><td>Loose brush / large pile pickup</td><td>$125/truckload</td><td>On request; small loose piles no longer part of free weekly collection as of July 1, 2026</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      Note: the Solid Waste division budget covers <strong>all</strong> collection services
+      (trash, recycling, and yard waste together) — the Town's public budget does not break out
+      a yard-waste-only cost. The chart below shows the division's Personnel vs. Operating split,
+      which is the closest available breakdown.
+    </div>
+
+    <div class="chart-box"><div id="chart-personnel-operating" style="height:360px;"></div></div>
+
+    <h2>What's changing July 1, 2026</h2>
+    <ul>
+      <li>Only Town-issued carts will be accepted for trash and yard trimmings — personal cans and mis-sorted items will no longer be collected.</li>
+      <li>Leaves may still go in paper bags during leaf season (Nov–Jan), capped at 5 containers/week combined with yard carts.</li>
+      <li>Loose piles of yard trimmings, any size, cost $125/truckload — they're no longer part of free weekly collection.</li>
+      <li>Income-based financial assistance is available for cart purchases and other paid services, including retroactive refunds back to July 1, 2025.</li>
+    </ul>
+  </section>
+
+  <!-- TAB 2: HISTORY V. CURRENT -->
+  <section id="tab-history" class="tab-panel">
+    <h2>Division spending over time</h2>
+    <p>
+      The Solid Waste division's total budget has risen steadily. The Town attributes this to a
+      0.75% retirement rate increase, a 10% jump in insurance costs, standard salary increases,
+      and increased funding for vehicle replacement and supplies — not service expansion (staffing
+      has stayed flat at 34.0 FTE).
+    </p>
+    <div class="chart-box"><div id="chart-budget-trend" style="height:360px;"></div></div>
+
+    <h2>Fee history: planned vs. actual</h2>
+    <p>
+      Despite the division's rising costs, the Town had planned to raise the yard cart fee from
+      $75 to $100 effective July 1, 2026 — then reversed that decision, holding it at $75.
+    </p>
+    <div class="chart-box"><div id="chart-fee-history" style="height:360px;"></div></div>
+
+    <h2>What else changed instead of the fee</h2>
+    <p>
+      Rather than raising the fee, the Town narrowed what it collects for free: loose leaf
+      vacuuming is being phased out (avoiding the purchase of a new vacuum truck and reducing
+      staff time), personal cans/bags are being phased out outside leaf season, and large loose
+      piles now cost $125/truckload. Council member Melissa McCullough said eliminating leaf
+      vacuuming "will benefit our budget because we need to buy a new vacuum truck soon, at
+      significant taxpayer expense," and noted the labor cost of the manual work involved.
+    </p>
+    <div class="callout warn">
+      In other words: the Town appears to be managing rising Solid Waste costs primarily by
+      <strong>reducing the scope of free service</strong> (fewer accepted container types, paid
+      brush pickup) rather than by raising the yard cart fee itself — which is a form of cost
+      pass-through even though the sticker price on the cart didn't move.
+    </div>
+  </section>
+
+  <!-- TAB 3: REASONABLE V. UNREASONABLE -->
+  <section id="tab-verdict" class="tab-panel">
+    <h2>The evidence, side by side</h2>
+    <p>You decide. Here's what points each way, based on the data above.</p>
+
+    <div class="chart-box"><div id="chart-cost-vs-fee" style="height:340px;"></div></div>
+    <div class="chart-box"><div id="chart-peer-fees" style="height:340px;"></div></div>
+
+    <div class="verdict-grid">
+      <div class="verdict-col reasonable">
+        <h3>Evidence it's reasonable</h3>
+        <ul>
+          <li>The yard cart fee was held flat at $75 even as division costs rose ~4.7% — the Town absorbed cost growth rather than passing it to the fee.</li>
+          <li>The stated cost drivers (retirement, insurance, salaries, vehicle replacement) are routine, externally-driven inflation, not padding or service expansion.</li>
+          <li>Staffing levels are flat — no evidence of overstaffing or bloated headcount behind the cost growth.</li>
+          <li>Financial assistance, including retroactive refunds, exists for lower-income households.</li>
+          <li>Cutting loose-leaf vacuuming avoids a costly new vacuum truck purchase — a genuine efficiency move, not just a service cut.</li>
+        </ul>
+      </div>
+      <div class="verdict-col unreasonable">
+        <h3>Evidence it's not / you're paying more than it looks</h3>
+        <ul>
+          <li>Chapel Hill's $75 cart fee is about 36% higher than neighboring Carrboro's $55 fee for the same kind of cart.</li>
+          <li>Free service scope shrank: loose brush piles that were once part of weekly collection now cost $125/truckload, and personal cans are no longer accepted outside leaf season — real cost increases just moved off the "fee" line.</li>
+          <li>Some residents describe the change as landing right after a property tax increase, compounding the sense of rising costs across the board.</li>
+          <li>The public budget doesn't isolate yard-waste-specific cost, so there's no way to verify the $75 fee against an actual per-cart cost of service — it could be over- or under-covering the real cost.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>What we don't know:</strong> the Town's budget documents don't publish a
+      cost-per-cart or cost-per-household figure for yard waste specifically, and we don't have
+      historical (pre-2025) yard cart fee data to see how $75 compares to, say, five years ago.
+      Those would sharpen this comparison considerably.
+    </div>
+  </section>
+
+  <footer>
+    Sources:
+    <a href="https://www.chapelhillnc.gov/Town-Services/Trash-and-Yard-Waste" target="_blank" rel="noopener">Town of Chapel Hill — Trash and Yard Waste</a>,
+    Town of Chapel Hill FY2026-27 Manager's Recommended Budget,
+    <a href="https://www.wral.com/news/local/chapel-hill-leaf-collection-policy-october-2025/" target="_blank" rel="noopener">WRAL News, Oct 2025</a>,
+    <a href="https://www.orangecountync.gov/1123/Solid-Waste-Programs-Fee" target="_blank" rel="noopener">Orange County Solid Waste Programs Fee</a>,
+    Town of Carrboro FY2025-26 Fee Schedule.
+    Built for independent civic analysis — verify current fees at
+    <a href="https://www.chapelhillnc.gov" target="_blank" rel="noopener">chapelhillnc.gov</a> before relying on this for a decision.
+  </footer>
+
+</div>
+<script src="js/charts.js"></script>
+<script src="js/tabs.js"></script>
+</body>
+</html>
